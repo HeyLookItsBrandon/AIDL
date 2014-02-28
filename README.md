@@ -1,4 +1,4 @@
-aidl
-====
+AIDL Example
+============
 
-Example AIDL service and client
+A simple example of a working AIDL service and corresponding client.

@@ -17,6 +17,7 @@ public class GuidanceServiceImpl extends IGuidanceService.Stub implements IGuida
 	@Override
 	public boolean markB(boolean completeSwath) throws RemoteException {
 		System.out.println("Marking B");
+
 		return false;
 	}
 }
