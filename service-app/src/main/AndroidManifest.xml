@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.coalminesoftware.aidl.service">
+
+	<application android:label="@string/app_name">
+
+		<service android:name=".AudioPlayerService" android:exported="true">
+			<intent-filter>
+				<action android:name="com.coalminesoftware.aidl.service.AudioPlayerService.BIND" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</service>
+
+	</application>
+</manifest>

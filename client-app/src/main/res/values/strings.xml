@@ -1,0 +1,5 @@
+<resources>
+	<string name="app_name">AIDL Client</string>
+
+	<string name="connecting">Connecting…</string>
+</resources>
