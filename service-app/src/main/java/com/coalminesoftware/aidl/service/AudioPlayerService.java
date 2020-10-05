@@ -12,5 +12,3 @@ public class AudioPlayerService extends Service {
 		return serviceImplementation;
 	}
 }
-
-
