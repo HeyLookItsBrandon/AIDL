@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 			public void onServiceConnected(ComponentName name, IBinder service) {
 				audioPlayerService = IAudioPlayerService.Stub.asInterface(service);
 
+				// Do work that was waiting for the service to connect
 				try {
 					label.setText(audioPlayerService.getTrackTitle(1));
 				} catch (RemoteException e) {
@@ -49,18 +50,19 @@ public class MainActivity extends Activity {
 		};
 
 		// The value returned by bindSearch() only indicates whether binding was successfully
-		// initiated, based on some preliminary checks like whether the calling app has the
-		// necessary permissions. Binding is not complete until onServiceConnected() is called.
+		// initiated, based on preliminary checks like whether the service exists and whether the
+		// caller has the necessary permissions to bind. Binding is not complete until
+		// ServiceConnection#onServiceConnected() is called.
 		//
 		// Binding is asynchronous. However, the process that calls onServiceConnected() gets queued
 		// and is likely to (eventually) be run by the same thread that called bindService().
 		// Because of that, it is not possible to block the thread that calls bindService() until
 		// onServiceConnected() is called.
-		boolean connected = bindService(
+		boolean bindingRequestedSuccessfully = bindService(
 				ServiceIntentBuilder.buildAudioPlayerBindIntent(),
 				connection,
 				Context.BIND_AUTO_CREATE);
 
-		Log.i(LOGGING_TAG, "Connection initiated: " + connected);
+		Log.i(LOGGING_TAG, "Binding requested successfully: " + bindingRequestedSuccessfully);
 	}
 }
